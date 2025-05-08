@@ -1,6 +1,6 @@
 # vab-omnigibson-test
 
-- 这个项目将VisualAgentBench里面的关于omnigibson的关键部分单独摘取出来，并进行了程序的简化，去掉了异步、信号锁、共享内存、多线程、实例工厂等等，只保留最基本的功能，环境内部部分不受任何影响
+- 这个项目将VisualAgentBench里面的关于omnigibson的关键部分单独摘取出来，并进行了程序的简化，去掉了异步、信号锁、共享内存、多线程、实例工厂等等，只保留最基本的功能，环境内部部分不受任何影响 (千问的api-key请换成自己的！！)
 
 ### omni_server
 
@@ -10,6 +10,7 @@
     - server 与 omnigibson 环境通过socket通信，
         - server 发送动作，omnigibson接受后进行解析，并调用自己的[函数](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/utils/actions.py)来执行（没有使用OMPL或cuRobo库）
         - omnigibson 发送文本prompt+图片url
+    - omnigibson程序里面写定的step次数上限30，40, 等（限制条件不同），若执行不成功则返回失败，可以更改相应[源代码](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/agent.py#L47)(在docker内更改)改变交互上限
     - 客户端发送interact进行交互请求
 - tasks.txt： 181个任务：格式（task, scene）
 - typings and utils: 辅助函数，来自原项目
@@ -37,10 +38,9 @@
 - qwen_agent.py
     - 根据系统提示词，返回格式为(只是用content部分)
         - {'content': 'THOUGHT: I need to move towards the cabinet in the kitchen to place the pumpkin inside it. The previous action was invalid because `move_to` is not a predefined function; instead, I should use `move`.\n\nACTION: move(3.cabinet)', 'refusal': None, 'role': 'assistant', 'annotations': None, 'audio': None, 'function_call': None, 'tool_calls': None} 
-        - client将content部分通过pos
+        - client将content部分通过post interact 传递给server端，然后server端通过socket传递给omnigbson环境，然后环境解析出"ACTION: MOVE(3.cabinet)"，并调用自己的[函数](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/utils/actions.py)来执行（没有使用OMPL或cuRobo库）
     - VAB的程序里，对agent的输入messages包括：系统提示词 + 环境的历史反馈（只包含文本prompt）+ 上一次agent反馈content部分 + 这次环境反馈（文本prompt+图片base64格式）
 - prompt.py： 系统的提示词
-- tasks.txt
 - typings and utils: 辅助函数，来自原项目
 - tasks.txt： 181个任务：格式（task, scene）
 - data
