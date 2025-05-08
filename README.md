@@ -22,7 +22,7 @@
         - Current Room: living_room_0.
         - Vision Input: 
 
-    其中第一句task goal 来自文件(https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/task/task_goal.json)
+    其中第一句task goal 来自[文件](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/task/task_goal.json)
 
     - render() 函数: （简单实现，可以根据需求更新。。）
     - step_full() 函数，调用_step_once_time()函数，与agent和serer断进行交互
@@ -40,9 +40,9 @@
 
 ### 环境部分 docker
 
-- (https://github.com/THUDM/VisualAgentBench/tree/main/src/server/tasks/omnigibson/vab_omnigibson_src) 这段代码是于docker内运行的,20G的原始镜像+30G的数据（有他们自己定义的一些场景，官方的数据不到30G），默认在docker的/VAB-OmniGibson-code 目录下
+- 这段[代码](https://github.com/THUDM/VisualAgentBench/tree/main/src/server/tasks/omnigibson/vab_omnigibson_src)是于docker内运行的,20G的原始镜像+30G的数据（有他们自己定义的一些场景，官方的数据不到30G），默认在docker的/VAB-OmniGibson-code 目录下
 - 数据在docker的/omnigibson-src/omnigibson/data/下，运行他们自己的数据脚本下载，然后移动到这个目录
-- omnigibson的docker环境需要cuda12.1/12.2版本+相应driver，NVIDIA container toolkit离线安装教程（https://zhuanlan.zhihu.com/p/15194336245）
+- omnigibson的docker环境需要cuda12.1/12.2版本+相应driver，NVIDIA container toolkit[离线安装教程](https://zhuanlan.zhihu.com/p/15194336245)
 - 由于我们摘取了程序最基本的地方，所以服务端程序不支持多人，多任务同时调用，这个可以每人配置一个docker容器解决
 
 
