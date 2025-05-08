@@ -5,6 +5,12 @@
 ### omni_server
 
 - omni_server.py
+    - fastapi + unicorn + APIRouter 进行http的请求监听和路由
+    - 客户端发送请求start_sample 启动任务，subprocess.popen 开启子任务，等待3-5 mins omnigibson启动，
+    - server 与 omnigibson 环境通过socket通信，
+        - server 发送动作，omnigibson接受后进行解析，并调用自己的[函数](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/utils/actions.py)来执行（没有使用OMPL或cuRobo库）
+        - omnigibson 发送文本prompt+图片url
+    - 客户端发送interact进行交互请求
 - tasks.txt： 181个任务：格式（task, scene）
 - typings and utils: 辅助函数，来自原项目
 
