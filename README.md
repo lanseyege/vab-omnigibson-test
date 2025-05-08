@@ -20,7 +20,7 @@
 ### omni_client
 
 - omni_client.py
-    - oclient = OmnigibsonClient( .., index, ..): index是task181个任务中的某一个编号
+    - oclient = OmnigibsonClient( .., index, ..): index 参数是task181个任务中的某一个编号，需要自己手动设定，选择执行某个任务
     - reset() 函数启动服务端任务，并得到返回（文本prompt+图片base64格式）文本prompt内容举例：
         - Your task goal is: Store the pumpkins and candles inside the cabinet, mugs on top of the cabinet. Place the caldron under the table in the living room. Pick all the documents from the sofa onto the table.
         - The reachable rooms during the task are: bathroom_0, bathroom_1, bedroom_0, corridor_0, dining_room_0, kitchen_0, living_room_0, living_room_1, living_room_2, storage_room_0, storage_room_1, storage_room_2.
