@@ -10,7 +10,7 @@
     - server 与 omnigibson 环境通过socket通信，
         - server 发送动作，omnigibson接受后进行解析，并调用自己的[函数](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/utils/actions.py)来执行（没有使用OMPL或cuRobo库）
         - omnigibson 发送文本prompt+图片url
-    - omnigibson程序里面写定的step次数上限30，40, 等（限制条件不同），若执行不成功则返回失败，可以更改相应[源代码](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/agent.py#L47)(在docker内更改)改变交互上限
+    - omnigibson程序里面写的环境step 交互次数上限30，40, 等（限制条件不同），若执行不成功则返回失败，可以更改相应[源代码](https://github.com/THUDM/VisualAgentBench/blob/main/src/server/tasks/omnigibson/vab_omnigibson_src/agent.py#L47)(在docker内更改)改变交互上限
     - 客户端发送interact进行交互请求
 - tasks.txt： 181个任务：格式（task, scene）
 - typings and utils: 辅助函数，来自原项目
