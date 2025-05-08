@@ -26,10 +26,13 @@
 
     - render() 函数: （简单实现，可以根据需求更新。。）
     - step_full() 函数，调用_step_once_time()函数，与agent和serer断进行交互
+        - agent.inference(messages)
+        - request.post('/interact', json = content... )
 - qwen_agent.py
     - 根据系统提示词，返回格式为(只是用content部分)
         - {'content': 'THOUGHT: I need to move towards the cabinet in the kitchen to place the pumpkin inside it. The previous action was invalid because `move_to` is not a predefined function; instead, I should use `move`.\n\nACTION: move(3.cabinet)', 'refusal': None, 'role': 'assistant', 'annotations': None, 'audio': None, 'function_call': None, 'tool_calls': None} 
-    - VAB的程序里，对agent的输入包括：系统提示词 + 环境的历史反馈（只包含文本prompt）+ 上一次agent反馈content部分 + 这次环境反馈（文本prompt+图片base64格式）
+        - client将content部分通过pos
+    - VAB的程序里，对agent的输入messages包括：系统提示词 + 环境的历史反馈（只包含文本prompt）+ 上一次agent反馈content部分 + 这次环境反馈（文本prompt+图片base64格式）
 - prompt.py： 系统的提示词
 - tasks.txt
 - typings and utils: 辅助函数，来自原项目
